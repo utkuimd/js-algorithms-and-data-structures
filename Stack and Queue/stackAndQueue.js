@@ -43,4 +43,27 @@ class Stack {
     }
 }
 
+class Queue {
+    constructor() {
+        this.first = null;
+        this.last = null;
+        this.size = 0;
+    }
+
+    enqueue(val) {
+        var newNode = new Node(val);
+        if(!this.first) {
+            this.first = newNode;
+            this.last = newNode;
+        } else {
+            //               LNN
+            // 99 100 101 -> 102
+            this.last.next = newNode;
+            this.last = newNode;
+        }
+        return ++this.size;
+    }
+}
+
 var stack = new Stack();
+var queue = new Queue();
