@@ -37,6 +37,27 @@ class BTS {
             }
         }
     }
+    // Works
+    find(value) {
+        if(this.root === null) {
+            return undefined;
+        }
+        var current = this.root;
+        var found = false;
+        while(current && !found) {
+            if(value < current.value) {
+                current = current.left;
+            } else if(value > current.value){
+                current = current.right;
+            } else {
+                found = true;
+            }
+        }
+        if(!found) {
+            return undefined;
+        };
+        return current;
+    }
 }
 //          10
 //      5       13
