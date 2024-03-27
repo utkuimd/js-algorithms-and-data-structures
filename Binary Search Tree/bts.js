@@ -73,7 +73,7 @@ class BTS {
                 queue.push(node.right);
             }
         }
-        return data;
+        return data; // [10, 5, 13, 2, 7, 11, 16]
     }
     // Works
     DFS_Pre_Order() {
@@ -89,7 +89,48 @@ class BTS {
             }
         }
         traverse(current);
-        return data;
+        return data; // [10, 5, 2, 7, 13, 11, 16]
+    }
+    // Works
+    DFS_Post_Order() {
+        var data = [];
+        function traverse(node) {
+            if(node.left) {
+                traverse(node.left);
+            }
+            if(node.right) {
+                traverse(node.right);
+            }
+            data.push(node.value);
+        }
+        traverse(this.root);
+        return data; // [2, 7, 5, 11, 16, 13, 10]
+    }
+    // Works
+    DFS_In_Order() {
+        var data = [];
+        function traverse(node) {
+            if(node.left) {
+                traverse(node.left);
+            }
+            data.push(node.value);
+            if(node.right) {
+                traverse(node.right);
+            }
+        }
+        traverse(this.root);
+        return data; // [2, 5, 7, 10, 11, 13, 16]
+    }
+    // Works
+    findSecondLargest() {
+        var current = this.root;  
+        if(current === null) return undefined;
+        while(current.right) {
+            if(current.right.right === null) {
+                return current.value;
+            }
+            current = current.right;
+        }
     }
 }
 //          10
